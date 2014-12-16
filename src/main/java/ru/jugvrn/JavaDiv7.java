@@ -13,11 +13,10 @@ import java.util.Random;
  * Created by shutty on 11/30/14.
  */
 @State(Scope.Benchmark)
-public class JavaCollectionsBench {
+public class JavaDiv7 {
 
-    public int SIZE = 100;
-    public int LENGTH = 2;
-    public int[] array = new int[SIZE];
+    public int SIZE = 10000;
+    public int div = 7;
     public List<Integer> list = new ArrayList<>();
 
     @Setup
@@ -26,37 +25,21 @@ public class JavaCollectionsBench {
         for (int i=0; i<SIZE; i++) {
             int value = random.nextInt();
             list.add(value);
-            array[i] = value;
-
         }
     }
 
     @Benchmark
-    public int baseline() {
-        return 100;
-    }
-
-    @Benchmark
-    public int baselineArray() {
-        int sum = 0;
-        for (int item: array) {
-            if (item % 2 == 0)
-                sum++;
-        }
-        return sum;
-    }
-    @Benchmark
-    public int baselineList() {
+    public long measureList() {
         int sum = 0;
         for (Integer item: list) {
-            if (item % 2 == 0)
-                sum++;
+            if (item % div == 0)
+            sum++;
         }
         return sum;
     }
 
-    @Benchmark
-    public long lambda() {
-        return list.stream().filter(p -> p % 2 == 0).count();
-    }
+/*    @Benchmark
+    public long measureLambda() {
+        return list.stream().filter(p -> p % div == 0).count();
+    }*/
 }
