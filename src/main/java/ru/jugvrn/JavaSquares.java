@@ -1,23 +1,25 @@
 package ru.jugvrn;
 
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.Setup;
-import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.*;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by shutty on 11/30/14.
  */
 @State(Scope.Benchmark)
+@BenchmarkMode(Mode.AverageTime)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class JavaSquares {
 
-    public int SIZE = 100000;
-    public List<Integer> list = new ArrayList<>();
+    @Param({"10000"})
+    public int SIZE;
+
+    public List<Integer> list = new LinkedList<>();
 
     @Setup
     public void prepare() {
@@ -29,7 +31,7 @@ public class JavaSquares {
     }
 
     @Benchmark
-    public int squares() {
+    public long squares() {
         int sum = 0;
         for (Integer item: list) {
             sum += item*item;
@@ -38,7 +40,7 @@ public class JavaSquares {
     }
 
     @Benchmark
-    public int squares_java8() {
+    public long squares_java8() {
         return list.stream().reduce(0, (part,next) -> part + next*next);
     }
 }

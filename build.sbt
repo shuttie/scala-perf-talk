@@ -4,11 +4,11 @@ name := "scalabench"
 
 version := "1.0"
 
-scalaVersion := "2.12.0-SNAPSHOT"
+//scalaVersion := "2.12.0-SNAPSHOT"
 
-scalaHome := Some(file("/home/shutty/code/scala/build/pack"))
+//scalaHome := Some(file("/home/shutty/code/scala/build/pack"))
 
-//scalaVersion := "2.11.4"
+scalaVersion := "2.11.5"
 
 //scalacOptions ++= Seq("-Ybackend:GenBCode", "-optimize", "-Yopt:l:classpath", "-Xexperimental")
 
@@ -22,4 +22,10 @@ scalaHome := Some(file("/home/shutty/code/scala/build/pack"))
 
 //javaOptions += "-XX:LoopUnrollLimit=0"
 
-javaOptions += "-server"
+libraryDependencies += "org.openjdk.jmh" % "jmh-core" % "1.5.1"
+
+libraryDependencies += "org.openjdk.jmh" % "jmh-generator-asm" % "1.5.1"
+
+libraryDependencies += "org.openjdk.jmh" % "jmh-generator-bytecode" % "1.5.1"
+
+libraryDependencies += "org.openjdk.jmh" % "jmh-generator-reflection" % "1.5.1"
