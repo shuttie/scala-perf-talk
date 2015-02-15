@@ -6,15 +6,16 @@ import java.util.concurrent.TimeUnit
 import org.openjdk.jmh.annotations._
 import scala.util.Random
 
-
 /**
  * Created by shutty on 11/30/14.
  */
+
+
 @State(Scope.Benchmark)
 @BenchmarkMode(Array(Mode.AverageTime))
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 class ScalaSquares {
-  @Param(Array("10000"))
+  @Param(Array("100", "1000", "10000"))
   var SIZE:Int = _
 
   var list:List[Int] = _
@@ -27,6 +28,11 @@ class ScalaSquares {
   @Benchmark
   def squaresFold:Long = {
     list.fold(0)( (part,next) => part + next*next)
+  }
+
+  @Benchmark
+  def squaresReduceLeft:Long = {
+    list.reduceLeft( (part,next) => part + next*next)
   }
 
   @Benchmark
@@ -44,4 +50,5 @@ class ScalaSquares {
     }
     sum
   }
+
 }

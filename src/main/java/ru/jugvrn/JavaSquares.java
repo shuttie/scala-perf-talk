@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class JavaSquares {
 
-    @Param({"10000"})
+    @Param({"100", "1000", "10000"})
     public int SIZE;
 
     public List<Integer> list = new LinkedList<>();
@@ -32,7 +32,7 @@ public class JavaSquares {
 
     @Benchmark
     public long squares() {
-        int sum = 0;
+        long sum = 0;
         for (Integer item: list) {
             sum += item*item;
         }

@@ -29,3 +29,7 @@ libraryDependencies += "org.openjdk.jmh" % "jmh-generator-asm" % "1.5.1"
 libraryDependencies += "org.openjdk.jmh" % "jmh-generator-bytecode" % "1.5.1"
 
 libraryDependencies += "org.openjdk.jmh" % "jmh-generator-reflection" % "1.5.1"
+
+resolvers += "bintray/non" at "http://dl.bintray.com/non/maven"
+
+libraryDependencies += "org.spire-math" %% "debox" % "0.7.0"
