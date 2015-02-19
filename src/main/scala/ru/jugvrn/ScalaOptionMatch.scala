@@ -13,39 +13,29 @@ import org.openjdk.jmh.annotations._
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 class ScalaOptionMatch {
   var someString:Option[String] = _
-  var noneString:Option[String] = _
   var nullableString:String = _
-  var nullString:String = _
 
   @Setup
   def setup() = {
     someString = Some("hello")
-    noneString = None
     nullableString = "hello"
-    nullString = null
   }
 
   @Benchmark
-  def measureMatchOptionNonempty() = someString match {
+  def baseline = {
+    1+1
+  }
+
+  @Benchmark
+  def measureMatchOption() = someString match {
     case Some(str) => str
-    case None => "empty"
+    case _ => "default value"
   }
 
   @Benchmark
-  def measureMatchOptionEmpty() = noneString match {
-    case Some(str) => str
-    case None => "empty"
-  }
-
-  @Benchmark
-  def measureIfNullNonempty() = if (nullableString != null)
+  def measureIfNull() = if (nullableString != null)
     nullableString
   else
-    "empty"
+    "default value"
 
-  @Benchmark
-  def measureIfNullEmpty = if (nullableString != null)
-    nullableString
-  else
-    "empty"
 }

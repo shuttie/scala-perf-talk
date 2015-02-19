@@ -14,6 +14,8 @@ scalaVersion := "2.11.5"
 
 //scalacOptions += "-print"
 
+//javaOptions += "-Djmh.perfasm.assemblySyntax=intel"
+
 //javaOptions += "-XX:MaxInlineSize=300"
 
 //javaOptions += "-XX:FreqInlineSize=300"
