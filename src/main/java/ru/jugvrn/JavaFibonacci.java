@@ -15,6 +15,7 @@ public class JavaFibonacci {
     @Param({"10","100","1000"})
     public int N;
 
+    @CompilerControl(CompilerControl.Mode.DONT_INLINE)
     private int fibonacciRec(int prev, int curr, int n) {
         if (n == 3)
             return prev+curr;

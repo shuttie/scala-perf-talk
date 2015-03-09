@@ -18,6 +18,7 @@ class ScalaFibonacci {
   @Param(Array("10","100","1000"))
   var N:Int = _
 
+  @CompilerControl(CompilerControl.Mode.DONT_INLINE)
   @tailrec
   private final def fibonacciTCO(prev:Int, curr:Int, n:Int):Int = {
     if (n == 3)
