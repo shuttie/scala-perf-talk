@@ -14,6 +14,12 @@ scalaVersion := "2.11.5"
 
 //scalacOptions += "-print"
 
+//javaOptions += "-XX:LoopUnrollLimit=0"
+
+//javaOptions += "-XX:+UnlockDiagnosticVMOptions"
+
+//javaOptions += "-XX:+PrintInlining"
+
 //javaOptions += "-Djmh.perfasm.assemblySyntax=intel"
 
 //javaOptions += "-XX:MaxInlineSize=300"
@@ -24,13 +30,13 @@ scalaVersion := "2.11.5"
 
 //javaOptions += "-XX:LoopUnrollLimit=0"
 
-libraryDependencies += "org.openjdk.jmh" % "jmh-core" % "1.5.1"
+libraryDependencies += "org.openjdk.jmh" % "jmh-core" % "1.6.1"
 
-libraryDependencies += "org.openjdk.jmh" % "jmh-generator-asm" % "1.5.1"
+libraryDependencies += "org.openjdk.jmh" % "jmh-generator-asm" % "1.6.1"
 
-libraryDependencies += "org.openjdk.jmh" % "jmh-generator-bytecode" % "1.5.1"
+libraryDependencies += "org.openjdk.jmh" % "jmh-generator-bytecode" % "1.6.1"
 
-libraryDependencies += "org.openjdk.jmh" % "jmh-generator-reflection" % "1.5.1"
+libraryDependencies += "org.openjdk.jmh" % "jmh-generator-reflection" % "1.6.1"
 
 resolvers += "bintray/non" at "http://dl.bintray.com/non/maven"
 
