@@ -13,7 +13,7 @@ import debox.Buffer
 @State(Scope.Benchmark)
 @BenchmarkMode(Array(Mode.AverageTime))
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-class ScalaSquaresPrimitive {
+class ScalaPrimSquares {
   @Param(Array("100", "1000", "10000"))
   var SIZE:Int = _
 
