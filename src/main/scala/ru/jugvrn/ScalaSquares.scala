@@ -17,31 +17,25 @@ import scala.util.Random
 class ScalaSquares {
   @Param(Array("100", "1000", "10000"))
   var SIZE:Int = _
-
-  var list:List[Int] = _
+  var list:Array[Int] = _
 
   @Setup
   def prepare = {
-    list = (0 to SIZE).map(x => Random.nextInt(2)).toList
+    list = (0 to SIZE).map(x => Random.nextInt(2)).toArray
   }
 
   @Benchmark
-  def squaresFold:Long = {
+  def fold:Long = {
     list.fold(0)( (part,next) => part + next*next)
   }
 
   @Benchmark
-  def squaresReduceLeft:Long = {
-    list.reduceLeft( (part,next) => part + next*next)
-  }
-
-  @Benchmark
-  def squaresMapSum:Long = {
+  def mapSum:Long = {
     list.map(x => x*x).sum
   }
 
   @Benchmark
-  def squaresNaive = {
+  def imperative:Long = {
     val i = list.iterator
     var sum:Long = 0
     while (i.hasNext) {
@@ -50,5 +44,4 @@ class ScalaSquares {
     }
     sum
   }
-
 }
