@@ -22,11 +22,6 @@ class ScalaOptionMatch {
   }
 
   @Benchmark
-  def baseline = {
-    1+1
-  }
-
-  @Benchmark
   def measureMatchOption() = someString match {
     case Some(str) => str
     case _ => "default value"
@@ -37,5 +32,4 @@ class ScalaOptionMatch {
     nullableString
   else
     "default value"
-
 }
