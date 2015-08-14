@@ -15,7 +15,7 @@ import scala.util.Random
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 class ScalaFibonacci {
 
-  @Param(Array("10","100","1000"))
+  @Param(Array("10","20","40"))
   var N:Int = _
 
   @CompilerControl(CompilerControl.Mode.DONT_INLINE)

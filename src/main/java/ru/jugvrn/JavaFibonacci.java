@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class JavaFibonacci {
-    @Param({"10","100","1000"})
+    @Param({"10","20","40"})
     public int N;
 
     @CompilerControl(CompilerControl.Mode.DONT_INLINE)
