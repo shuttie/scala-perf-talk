@@ -19,10 +19,11 @@ public class JavaSquares {
     @Param({"100", "1000", "10000"})
     public int SIZE;
 
-    public List<Integer> list = new LinkedList<>();
+    public List<Integer> list;
 
     @Setup
     public void prepare() {
+        list = new ArrayList<>();
         Random random = new Random();
         for (int i=0; i<SIZE; i++) {
             int value = random.nextInt(2);
@@ -31,7 +32,7 @@ public class JavaSquares {
     }
 
     @Benchmark
-    public long squares() {
+    public long imperative() {
         long sum = 0;
         for (Integer item: list) {
             sum += item*item;
@@ -39,8 +40,8 @@ public class JavaSquares {
         return sum;
     }
 
-    @Benchmark
-    public long squares_java8() {
-        return list.stream().reduce(0, (part,next) -> part + next*next);
-    }
+    //@Benchmark
+    //public long squares_java8() {
+        //return list.stream().reduce(0, (part,next) -> part + next*next);
+    //}
 }
