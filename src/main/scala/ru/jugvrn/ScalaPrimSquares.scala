@@ -1,5 +1,5 @@
 package ru.jugvrn
-
+/*
 import java.util.concurrent.TimeUnit
 
 import org.openjdk.jmh.annotations._
@@ -53,3 +53,4 @@ class ScalaPrimSquares {
     sum
   }
 }
+*/

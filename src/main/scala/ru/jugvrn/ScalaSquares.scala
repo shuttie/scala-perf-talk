@@ -30,6 +30,11 @@ class ScalaSquares {
   }
 
   @Benchmark
+  def reduce:Long = {
+    list.reduce( (part,next) => part + next*next )
+  }
+
+  @Benchmark
   def mapSum:Long = {
     list.map(x => x*x).sum
   }
