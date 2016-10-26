@@ -13,11 +13,13 @@ import org.openjdk.jmh.annotations._
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 class ScalaOptionMatch {
   var someString:Option[String] = _
+  var noneString:Option[String] = _
   var nullableString:String = _
 
   @Setup
   def setup() = {
     someString = Some("hello")
+    noneString = None
     nullableString = "hello"
   }
 
@@ -25,6 +27,12 @@ class ScalaOptionMatch {
   def measureMatchOption() = someString match {
     case Some(str) => str
     case _ => "default value"
+  }
+
+  @Benchmark
+  def measureMatchOptionNone() = noneString match {
+    case None => "default value"
+    case Some(str) => str
   }
 
   @Benchmark
